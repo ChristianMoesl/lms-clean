@@ -6,9 +6,13 @@ version := "0.0.1-SNAPSHOT"
 
 scalaVersion := "2.12.8"
 
+scalacOptions += "-target:jvm-1.8"
+
 val paradiseVersion = "2.1.0"
 
 //crossScalaVersions := Seq("2.12.1")
+
+mainClass := Some("lms.Main")
 
 resolvers += Resolver.sonatypeRepo("snapshots")
 

@@ -168,28 +168,28 @@ class LambdaTest extends TutorialFunSuite {
 
   // Test for lambdas returned by lambdas returned by lambdas with effect
   // on global variables
-  test("curried_lambda_2") {
-    val driver = new DslDriver[Int, Unit] {
-      @virtualize
-      def snippet(arg: Rep[Int]) = {
-        var x = 0
-        var y = 1
-        var z = 2
-        val f = fun { (n: Rep[Int]) =>
-          x = 1
-          fun { (m: Rep[Int]) =>
-            y = 2
-            fun { (x: Rep[Int]) =>
-              z = 3
-              n + m + x
-            }
-          }
-        }
-        printf("%d %d %d %d", f(arg)(arg)(arg), x, y, z)
-      }
-    }
-    check("curried_lambda_2", driver.code, "scala")
-  }
+  //test("curried_lambda_2") {
+    //val driver = new DslDriver[Int, Unit] {
+      //@virtualize
+      //def snippet(arg: Rep[Int]) = {
+        //var x = 0
+        //var y = 1
+        //var z = 2
+        //val f = fun { (n: Rep[Int]) =>
+          //x = 1
+          //fun { (m: Rep[Int]) =>
+            //y = 2
+            //fun { (x: Rep[Int]) =>
+              //z = 3
+              //n + m + x
+            //}
+          //}
+        //}
+        //printf("%d %d %d %d", f(arg)(arg)(arg), x, y, z)
+      //}
+    //}
+    //check("curried_lambda_2", driver.code, "scala")
+  //}
 
   // Test for lambdas returned by lambdas returned by lambdas with effect
   // on input variables

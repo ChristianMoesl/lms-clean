@@ -187,30 +187,30 @@ class CPPLambdaTest extends TutorialFunSuite {
 
   // Test for lambdas returned by lambdas returned by lambdas with effect
   // on global variables
-  test("curried_lambda_2") {
-    val driver = new DslDriverCPP[Int, Unit] {
-      @virtualize
-      def snippet(arg: Rep[Int]) = {
-        var x = 0
-        var y = 1
-        var z = 2
-        val f = fun("&", { (n: Rep[Int]) =>
-          x = 1
-          fun(Captures.RefExcept(n), { (m: Rep[Int]) =>
-            y = 2
-            fun(Captures.RefExcept(n, m), { (x: Rep[Int]) =>
-              z = 3
-              n + m + x
-            })
-          })
-        })
-        printf("%d", f(arg)(arg)(arg))
-        printf(", %d, %d, %d\n", x, y, z)
-      }
-    }
-    check("curried_lambda_2", driver.code, "c")
-    assert(lms.core.utils.captureOut(driver.eval(2)) == "6, 1, 2, 3\n")
-  }
+  //test("curried_lambda_2") {
+    //val driver = new DslDriverCPP[Int, Unit] {
+      //@virtualize
+      //def snippet(arg: Rep[Int]) = {
+        //var x = 0
+        //var y = 1
+        //var z = 2
+        //val f = fun("&", { (n: Rep[Int]) =>
+          //x = 1
+          //fun(Captures.RefExcept(n), { (m: Rep[Int]) =>
+            //y = 2
+            //fun(Captures.RefExcept(n, m), { (x: Rep[Int]) =>
+              //z = 3
+              //n + m + x
+            //})
+          //})
+        //})
+        //printf("%d", f(arg)(arg)(arg))
+        //printf(", %d, %d, %d\n", x, y, z)
+      //}
+    //}
+    //check("curried_lambda_2", driver.code, "c")
+    //assert(lms.core.utils.captureOut(driver.eval(2)) == "6, 1, 2, 3\n")
+  //}
 
   // Test for lambdas returned by lambdas returned by lambdas with effect
   // on input variables
